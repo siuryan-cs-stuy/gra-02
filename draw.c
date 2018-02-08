@@ -9,52 +9,76 @@
 void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
     int A = y1 - y0;
     int B = -x1 + x0;
-    int x = x0;
-    int y = y0;
 
-    int d, sign;
+    int x, y;
+    if (x0 <= x1) {
+        x = x0;
+    } else {
+        x = x1;
+    }
+    y = y0;
 
-    printf("%d\n", A);
-    printf("%d\n", -B);
+    int d;
+
     if ((A >= 0 && -B >= 0) || (A <= 0 && -B <= 0)) {
         // octants I, II
-        if (-B >= A) {
+        if (abs(B) >= abs(A)) {
             // octant I
             d = 2*A + B;
-            sign = 1;
+
+            while (x <= x1) {
+                plot(s, c, x, y);
+
+                if (d > 0) {
+                    y++;
+                    d += 2*B;
+                }
+                x++;
+                d += 2*A;
+            }
         } else {
             // octant II
             d = A + 2*B;
-            sign = -1;
+
+            while (y <= y1) {
+                plot(s, c, x, y);
+
+                if (d < 0) {
+                    x++;
+                    d += 2*A;
+                }
+                y++;
+                d += 2*B;
+            }
         }
     } else {
-        if (-B >= A) {
+        if (abs(B) >= abs(A)) {
             // octant VIII
             d = 2*A - B;
-            sign = 1;
+
+            while (x <= x1) {
+                plot(s, c, x, y);
+
+                if (d < 0) {
+                    y--;
+                    d -= 2*B;
+                }
+                x++;
+                d += 2*A;
+            }
         } else {
             // octant VII
             d = A - 2*B;
-            sign = -1;
-        }
-    }
+            while (x <= x1) {
+                plot(s, c, x, y);
 
-    while (x <= x1) {
-        plot(s, c, x, y);
-        if (sign > 0) {
-            if (d > 0) {
-                y += sign * 1;
-                d += 2*B;
+                if (d > 0) {
+                    x++;
+                    d += 2*A;
+                }
+                y--;
+                d -= 2*B;
             }
-            x += sign * 1;
-            d += 2*A;
-        } else {
-            if (d < 0) {
-                x += sign*1;
-                d += 2*A;
-            }
-            y += sign * 1;
-            d += 2*B;
         }
     }
 }

@@ -21,11 +21,15 @@ int main() {
   draw_line(0, 125, 500, 375, s, c);
   draw_line(0, 0, 500, 500, s, c);
   draw_line(125, 0, 375, 500, s, c);
-  //draw_line(250, 0, 250, 500, s, c);
-  draw_line(375, 0, 125, 500, s, c);
-  draw_line(500, 0, 0, 500, s, c);
-  //draw_line(0, 500, 500, 0, s, c);
+  draw_line(250, 0, 250, 500, s, c);
+  draw_line(125, 500, 375, 0, s, c);
+  draw_line(0, 500, 500, 0, s, c);
+  draw_line(0, 375, 500, 125, s, c);
 
+  draw_line(125, 375, 375, 375, s, c);
+  draw_line(375, 125, 375, 375, s, c);
+  draw_line(125, 125, 125, 375, s, c);
+  draw_line(125, 125, 375, 125, s, c);
 
   display(s);
   save_extension(s, "lines.png");

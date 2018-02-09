@@ -26,10 +26,24 @@ int main() {
   draw_line(0, 500, 500, 0, s, c);
   draw_line(0, 375, 500, 125, s, c);
 
+  /*
   draw_line(125, 375, 375, 375, s, c);
   draw_line(375, 125, 375, 375, s, c);
   draw_line(125, 125, 125, 375, s, c);
   draw_line(125, 125, 375, 125, s, c);
+  */
+
+  c.red = MAX_COLOR;
+  c.green = MAX_COLOR;
+  c.blue = 0;
+
+  draw_line(125, 125, 250, 275, s, c);
+  draw_line(250, 275, 375, 125, s, c);
+  draw_line(125, 125, 375, 125, s, c);
+
+  draw_line(125, 375, 250, 225, s, c);
+  draw_line(250, 225, 375, 375, s, c);
+  draw_line(125, 375, 375, 375, s, c);
 
   display(s);
   save_extension(s, "lines.png");

@@ -11,11 +11,7 @@ void draw_line(int x0, int y0, int x1, int y1, screen s, color c) {
     int B = -x1 + x0;
 
     int x, y;
-    if (x0 <= x1) {
-        x = x0;
-    } else {
-        x = x1;
-    }
+    x = x0;
     y = y0;
 
     int d;
